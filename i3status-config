@@ -1,0 +1,48 @@
+general {
+    colors = true
+    color_good = "#a3be8c"
+    color_degraded = "#ebcb8b"
+    color_bad = "#bf616a"
+    interval = 1
+    separator = "|"
+}
+
+order += "volume master"
+order += "battery all"
+order += "memory"
+order += "tztime local"
+order += "time"
+
+wireless _first_ {
+    format_up = "W: (%quality at %essid) %ip"
+    format_down = "W: down"
+}
+
+ethernet _first_ {
+    format_up = "E: %ip (%speed)"
+    format_down = "E: down"
+}
+
+battery all {
+    format = "‎ ‎󰁹 %percentage‎ ‎"
+}
+
+memory {
+    format = "   %used / %total "
+    threshold_degraded = "1G"
+    format_degraded = " MEMORY < %total "
+}
+
+tztime local {
+    format = "   %A, %B %d "
+}
+
+time {
+    format = " %H:%M:%S "
+}
+
+volume master {
+    format = " 󰕾 %volume "
+    format_muted = " 󰝟 muted (%volume)"
+    device = "pulse"
+}
